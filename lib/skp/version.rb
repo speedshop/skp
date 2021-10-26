@@ -1,3 +1,3 @@
 module SKP
-  VERSION = "1.4.0"
+  VERSION = "0.0.1"
 end
