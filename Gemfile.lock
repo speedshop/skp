@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    skp (1.4.0)
+    skp (0.0.1)
       cli-ui
       excon
       thor
