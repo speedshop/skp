@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Nate Berkopec"]
   spec.email = ["nate@speedshop.co"]
 
-  spec.summary = "A CLI for the Rails Performance Workshop."
+  spec.summary = "A CLI for Sidekiq in Practice."
   spec.homepage = "https://speedshop.co"
   spec.license = "GPL-3.0-or-later"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")

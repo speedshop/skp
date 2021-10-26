@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "skp", path: "./"
 gem "thor"
 gem "thor-hollaback"
 gem "excon"

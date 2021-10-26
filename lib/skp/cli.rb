@@ -24,7 +24,7 @@ module SKP
       warn_if_already_started
 
       print_banner
-      say "\u{1F48E} Welcome to the Rails Performance Workshop. \u{1F48E}"
+      say "\u{1F48E} Welcome to Sidekiq in Practice. \u{1F48E}"
       say ""
       say "This is skp, the command line client for this workshop."
       say ""
@@ -74,7 +74,7 @@ module SKP
       if content.nil?
         SKP::CLI.new.print_banner
         say "Congratulations!"
-        say "You have completed the Rails Performance Workshop."
+        say "You have completed Sidekiq in Practice."
         exit(0)
       end
 

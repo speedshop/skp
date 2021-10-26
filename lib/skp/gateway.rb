@@ -17,7 +17,7 @@ module SKP
     end
 
     def list_content
-      response = Excon.get(domain + "/contents", user: @key)
+      response = Excon.get(domain + "/contents?product=sip", user: @key)
       if response.status == 200
         JSON.parse(response.body)
       else

@@ -21,37 +21,31 @@ module SKP
 
       def small_banner
         %(
-       _____ _          _____     _ _
-      |_   _| |_ ___   | __  |___|_| |___
-        | | |   | -_|  |    -| .'| | |_ -|
-        |_| |_|_|___|  |__|__|__,|_|_|___|
-       _____         ___
-      |  _  |___ ___|  _|___ ___ _____ ___ ___ ___ ___
-      |   __| -_|  _|  _| . |  _|     | .'|   |  _| -_|
-      |__|  |___|_| |_| |___|_| |_|_|_|__,|_|_|___|___|
-       _ _ _         _       _
-      | | | |___ ___| |_ ___| |_ ___ ___
-      | | | | . |  _| '_|_ -|   | . | . |
-      |_____|___|_| |_,_|___|_|_|___|  _|
-                                    |_|
+          ,---.o    |     |    o         o
+          `---..,---|,---.|__/ .,---.    .,---.
+              |||   ||---'|  \ ||   |    ||   |
+          `---'``---'`---'`   ```---|    ``   '
+                                    |
+          ,---.               |    o
+          |---',---.,---.,---.|--- .,---.,---.
+          |    |    ,---||    |    ||    |---'
+          `    `    `---^`---'`---'``---'`---'
           #{reset})
       end
 
       def banner
         %(
-                                 _____ _          _____     _ _
-      +hmNMMMMMm/`  -ymMMNh/    |_   _| |_ ___   | __  |___|_| |___
-      sMMMMMMMMMy   +MMMMMMMMy    | | |   | -_|  |    -| .'| | |_ -|
-      yMMMMMMMMMMy` yMMMMMMMMN    |_| |_|_|___|  |__|__|__,|_|_|___|
-       `dMMMMMMMMMMm:-dMMMMMMm:   _____         ___
-        `sNMMMMMMMMMMs.:+sso:`   |  _  |___ ___|  _|___ ___ _____ ___ ___ ___ ___
-          :dMMMMMMMMMMm/         |   __| -_|  _|  _| . |  _|     | .'|   |  _| -_|
-      :oss+:.sNMMMMMMMMMMy`      |__|  |___|_| |_| |___|_| |_|_|_|__,|_|_|___|___|
-     /mMMMMMMd-:mMMMMMMMMMMd.     _ _ _         _       _
-     NMMMMMMMMy `hMMMMMMMMMMh    | | | |___ ___| |_ ___| |_ ___ ___
-     yMMMMMMMM+  `dMMMMMMMMMy    | | | | . |  _| '_|_ -|   | . | . |
-     /hNMMmy-  `/mMMMMMNmy/      |_____|___|_| |_,_|___|_|_|___|  _|
-                                                               |_|
+      +hmNMMMMMm/`  -ymMMNh/
+      sMMMMMMMMMy   +MMMMMMMMy   ,---.o    |     |    o         o
+      yMMMMMMMMMMy` yMMMMMMMMN   `---..,---|,---.|__/ .,---.    .,---.
+       `dMMMMMMMMMMm:-dMMMMMMm:      |||   ||---'|  \ ||   |    ||   |
+        `sNMMMMMMMMMMs.:+sso:`   `---'``---'`---'`   ```---|    ``   '
+          :dMMMMMMMMMMm/                                   |
+      :oss+:.sNMMMMMMMMMMy`      ,---.               |    o
+     /mMMMMMMd-:mMMMMMMMMMMd.    |---',---.,---.,---.|--- .,---.,---.
+     NMMMMMMMMy `hMMMMMMMMMMh    |    |    ,---||    |    ||    |---'
+     yMMMMMMMM+  `dMMMMMMMMMy    `    `    `---^`---'`---'``---'`---'
+     /hNMMmy-  `/mMMMMMNmy/
           #{reset})
       end
     end

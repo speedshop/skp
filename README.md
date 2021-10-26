@@ -1,4 +1,4 @@
-# The Rails Performance Workshop Client
+# The Sidekiq in Practice Client
 
-This is `rpw`, the CLI client for the Rails Performance Workshop.
-Copyright (C) 2020 The Speedshop Ltd. Co.
+This is `skp`, the CLI client for the Sidekiq in Practice Workshop.
+Copyright (C) 2021 The Speedshop Ltd. Co.

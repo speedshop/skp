@@ -3,7 +3,7 @@ require "skp/cli/quiz"
 
 module SKP
   class Client
-    SKP_SERVER_DOMAIN = ENV["SKP_SERVER_DOMAIN"] || "https://skp-licensor.speedshop.co"
+    SKP_SERVER_DOMAIN = ENV["SKP_SERVER_DOMAIN"] || "https://rpw-licensor.speedshop.co"
     attr_reader :gateway
 
     def initialize(gateway = nil)
