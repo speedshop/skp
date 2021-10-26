@@ -106,7 +106,7 @@ module SKP
 
       frame_open = false
       client.list.each do |lesson|
-        if lesson["title"].start_with?("Section")
+        if lesson["title"].start_with?("Sidekiq in Practice")
           ::CLI::UI::Frame.close(nil) if frame_open
           ::CLI::UI::Frame.open(lesson["title"])
           frame_open = true
@@ -124,17 +124,19 @@ module SKP
           "\u{274C} "
         end
 
+        indent = lesson["indent"].to_i || 0
+        indent = "  " * indent
         case lesson["style"]
         when "video"
-          puts str + ::CLI::UI.fmt("{{red:#{lesson["title"]}}}")
+          puts str + ::CLI::UI.fmt("#{indent}{{red:#{lesson["title"]}}}")
         when "quiz"
           # puts ::CLI::UI.fmt "{{green:#{"  " + lesson["title"]}}}"
         when "lab"
-          puts str + ::CLI::UI.fmt("{{yellow:#{"  " + lesson["title"]}}}")
+          puts str + ::CLI::UI.fmt("#{indent}{{yellow:#{lesson["title"]}}}")
         when "text"
-          puts str + ::CLI::UI.fmt("{{magenta:#{"  " + lesson["title"]}}}")
+          puts str + ::CLI::UI.fmt("#{indent}{{magenta:#{lesson["title"]}}}")
         else
-          puts str + ::CLI::UI.fmt("{{magenta:#{"  " + lesson["title"]}}}")
+          puts str + ::CLI::UI.fmt("#{indent}{{magenta:#{lesson["title"]}}}")
         end
       end
 
