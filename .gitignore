@@ -1,0 +1,9 @@
+bundle
+*.gem
+.skp_key
+.skp_info
+smoketest
+scripts
+.DS_Store
+shell.nix
+gemset.nix

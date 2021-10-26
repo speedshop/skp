@@ -1,0 +1,109 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: >-
+      ${{ matrix.os }} ${{ matrix.ruby }}
+    env:
+      CI: true
+      TESTOPTS: -v
+
+    runs-on: ${{ matrix.os }}
+    if: |
+      !(   contains(github.event.pull_request.title,  '[ci skip]')
+        || contains(github.event.pull_request.title,  '[skip ci]')
+        || contains(github.event.head_commit.message, '[ci skip]')
+        || contains(github.event.head_commit.message, '[skip ci]'))
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-20.04, macos-10.15, windows-2019 ]
+        ruby: [ 2.6, 2.7, head ]
+
+    steps:
+      - name: repo checkout
+        uses: actions/checkout@v2
+
+      - name: load ruby
+        uses: MSP-Greg/setup-ruby-pkgs@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: bundle install
+        run:   |
+          gem install bundler && bundle install --jobs 4 --retry 3
+
+      - name: standardrb 
+        run: bundle exec standardrb 
+
+      - name: test
+        run: bundle exec rake test
+
+  build-live:
+    services:
+      postgres:
+        image: postgres:alpine
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    name: Test against a live server
+    env:
+      CI: true
+      TESTOPTS: -v 
+      LIVE_SERVER: true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: repo checkout
+        uses: actions/checkout@v2
+
+      - name: load ruby
+        uses: MSP-Greg/setup-ruby-pkgs@v1
+        with:
+          ruby-version: 2.7.2
+
+      - name: bundle install
+        run:   |
+          bundle install --jobs 4 --retry 3
+
+      - uses: actions/checkout@master
+        with:
+          repository: speedshop/licensor
+          path: server 
+
+      - name: nuke server ruby requirement 
+        run: grep -v "^ruby" Gemfile > temp && mv -f temp Gemfile
+        working-directory: ./server
+
+      - name: bundle install the server
+        run: |
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:setup
+        working-directory: ./server
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+
+      - name: start the server 
+        run: rails server &
+        working-directory: ./server
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+
+      - name: wait for server 
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+            printf '.'
+            sleep 1
+          done
+
+      - name: test
+        run: bundle exec rake test
