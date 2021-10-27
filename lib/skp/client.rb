@@ -153,8 +153,8 @@ module SKP
 
     def extract_content(content)
       folder = content["style"]
-      `tar -C #{folder} -xzf #{folder}/#{content["s3_key"]}`
-      File.delete("#{folder}/#{content['s3_key']")
+      `tar -C #{folder} -xzf #{File.join(folder, content["s3_key"])}`
+      File.delete(File.join(folder, content["s3_key"]))
     end
   end
 end
