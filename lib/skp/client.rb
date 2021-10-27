@@ -53,7 +53,7 @@ module SKP
     end
 
     def directory_setup(home_dir_ok = true)
-      ["video", "quiz", "lab", "text", "cgrp"].each do |path|
+      ["video", "quiz", "lab", "text", "compiled", "prof_gray"].each do |path|
         FileUtils.mkdir_p(path) unless File.directory?(path)
       end
 
@@ -71,7 +71,8 @@ module SKP
           f.puts "quiz\n"
           f.puts "lab\n"
           f.puts "text\n"
-          f.puts "cgrp\n"
+          f.puts "compiled\n"
+          f.puts "prof_gray\n"
         end
       end
 
@@ -117,7 +118,7 @@ module SKP
     end
 
     def directories_ready?
-      ["video", "quiz", "lab", "text", "cgrp"].all? do |path|
+      ["video", "quiz", "lab", "text", "compiled"].all? do |path|
         File.directory?(path)
       end
     end
@@ -153,6 +154,7 @@ module SKP
     def extract_content(content)
       folder = content["style"]
       `tar -C #{folder} -xzf #{folder}/#{content["s3_key"]}`
+      File.delete("#{folder}/#{content['s3_key']")
     end
   end
 end

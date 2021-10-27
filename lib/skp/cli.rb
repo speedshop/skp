@@ -228,10 +228,15 @@ module SKP
       when "text"
         location = "text/#{content["s3_key"]}"
         openable = true
-      when "cgrp"
-        say "The Complete Guide to Rails Performance has been downloaded and extracted to the ./cgrp directory."
-        say "All source code for the CGRP is in the src directory, PDF and other compiled formats are in the release directory."
+      when "compiled"
+        say "Sidekiq in Practice is primarily designed to be experienced via this CLI."
+        say "However, PDF and other compiled formats are in your ./compiled directory."
         say "You can check it out now, or to continue: $ skp next "
+      when "prof_gray"
+        say "Sidekiq in Practice has several hands-on labs to help you to understand the workshop."
+        say "We've downlaoded some supporting files in ./prof_gray"
+        say "You will need to read these files to work on the labs, but don't modify them."
+        say "You can check them out now, or to continue: $ skp next "
       end
       if location
         if openable && !open_after
