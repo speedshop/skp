@@ -47,7 +47,7 @@ module SKP
 
       client.directory_setup((ans == "my home directory (~/.skp)"))
 
-      key = ::CLI::UI::Prompt.ask("Your Purchase Key: ")
+      key = ::CLI::UI::Prompt.ask("Your Purchase Key: ").strip
 
       unless client.setup(key)
         say "That is not a valid key. Please try again."
