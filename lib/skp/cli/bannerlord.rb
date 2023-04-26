@@ -23,7 +23,7 @@ module SKP
         %(
           ,---.o    |     |    o         o
           `---..,---|,---.|__/ .,---.    .,---.
-              |||   ||---'|  \ ||   |    ||   |
+              |||   ||---'|   ||   |    ||   |
           `---'``---'`---'`   ```---|    ``   '
                                     |
           ,---.               |    o
@@ -38,7 +38,7 @@ module SKP
       +hmNMMMMMm/`  -ymMMNh/
       sMMMMMMMMMy   +MMMMMMMMy   ,---.o    |     |    o         o
       yMMMMMMMMMMy` yMMMMMMMMN   `---..,---|,---.|__/ .,---.    .,---.
-       `dMMMMMMMMMMm:-dMMMMMMm:      |||   ||---'|  \ ||   |    ||   |
+       `dMMMMMMMMMMm:-dMMMMMMm:      |||   ||---'|   ||   |    ||   |
         `sNMMMMMMMMMMs.:+sso:`   `---'``---'`---'`   ```---|    ``   '
           :dMMMMMMMMMMm/                                   |
       :oss+:.sNMMMMMMMMMMy`      ,---.               |    o

@@ -31,7 +31,8 @@ module SKP
         downloaded_file = File.open("#{folder}/#{content["s3_key"]}.partial", "w")
         streamer = lambda do |chunk, remaining_bytes, total_bytes|
           downloaded_file.write(chunk)
-          bar.tick(set_percent: 1 - (remaining_bytes.to_f / total_bytes).round(2))
+          finished = (remaining_bytes.to_f / total_bytes.to_f)
+          bar.tick(set_percent: (1 - finished).round(2))
         end
         response = Excon.get(content["url"], response_block: streamer)
         unless response.status == 200

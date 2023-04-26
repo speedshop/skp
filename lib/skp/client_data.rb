@@ -18,7 +18,7 @@ module SKP
       data[key] = value
 
       begin
-        File.open(filestore_location, "w") { |f| f.write(YAML.dump(data)) }
+        File.write(filestore_location, YAML.dump(data))
       rescue
         # raise Error, "The SKP data at #{filestore_location} is not writable. \
         # Check your file permissions."
@@ -62,11 +62,9 @@ module SKP
 
     def data
       @data ||= begin
-        begin
-          YAML.safe_load(File.read(filestore_location), permitted_classes: [Time]) || {}
-        rescue Errno::ENOENT
-          {}
-        end
+        YAML.safe_load(File.read(filestore_location), permitted_classes: [Time]) || {}
+      rescue Errno::ENOENT
+        {}
       end
     end
   end
